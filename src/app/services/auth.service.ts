@@ -49,6 +49,10 @@ export class AuthService {
   get user() {
     return this.afAuth.auth.currentUser;
   }
+  
+  get isLoggedIn() {
+    return (this.user) ? true : false;
+  }
 
   register(email, password) {
     return this.afAuth.auth.createUserWithEmailAndPassword(email, password);
