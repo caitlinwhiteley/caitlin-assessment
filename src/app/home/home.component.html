@@ -1,3 +1,27 @@
-<p>
-  home works!
-</p>
+<body>
+  <h1>Presents....</h1>
+  
+  <p>Hi {{user.displayName}}</p>
+  
+  <div>
+    <h2>Add data</h2>
+
+    
+    
+
+  </div>
+
+  <div>
+    <h2>Current data</h2>
+
+    <div *ngFor="let present of presents | async">
+      <p> Present: {{present.whatItWas}} </p>
+      <p> Picture is of: {{present.picture}} </p>
+      <p> From {{present.whoFrom}} to {{present.whoTo}} </p>
+      <p> Present rating: {{present.rating}} </p>
+      <p> Thankes? {{present.thanked}} </p>
+    </div>
+  </div>
+
+
+</body>

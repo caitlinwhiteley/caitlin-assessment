@@ -49,7 +49,7 @@ export class AuthService {
   get user() {
     return this.afAuth.auth.currentUser;
   }
-  
+
   get isLoggedIn() {
     return (this.user) ? true : false;
   }
@@ -66,6 +66,13 @@ export class AuthService {
     this.afAuth.auth.signOut()
       .then(() => this.router.navigate['login'])
       .catch((error) => console.log("An error occured logging out: " + error));
+  }
+
+  setName(name) {
+    return this.afAuth.auth.currentUser.updateProfile({
+      displayName: name,
+      photoURL: 'https://i.pinimg.com/236x/b3/73/59/b373595c473299efe893572dd160f861--xmas-songs-song-with-lyrics.jpg'
+    })
   }
 
 }

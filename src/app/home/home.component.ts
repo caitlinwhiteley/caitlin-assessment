@@ -13,6 +13,7 @@ export class HomeComponent implements OnInit {
   presents: Observable<IPresent[]>;
   user;
   isLoggedIn: boolean;
+  // displayName: string;
 
   constructor(
     private authService: AuthService,
@@ -21,6 +22,7 @@ export class HomeComponent implements OnInit {
     this.user = this.authService.user;
     this.presents = this.authService.presents;
     this.isLoggedIn = this.authService.isLoggedIn;
+    // this.displayName = this.authService.user.displayName;
   }
 
   logout() {

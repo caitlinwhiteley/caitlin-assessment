@@ -1,5 +1,40 @@
-<p>
-  login works!
-</p>
+<body>
 
+<h1>Login</h1>
 
+<form #loginForm="ngForm" (onSubmit)="login(loginForm.value)">
+
+  <label for="email">Email</label>
+  <input
+    id="email"
+    ngModel
+    #email
+    name="email"
+    type="email"
+    placeholder="example@example.com"
+    required
+    autofocus
+  >
+
+  <label for="password">Password</label>
+  <input
+    id="password"
+    ngModel
+    #password
+    name="password"
+    type="password"
+    placeholder="Password"
+    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
+    required
+  >
+
+  <button type="submit">Login</button>
+
+</form>
+
+<p>Don't have an account yet? <a routerLink="/register">Register</a> here</p>
+
+<!-- Error for if username or password incorrect
+     Disable button until forms completed? -->
+
+</body>

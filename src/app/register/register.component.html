@@ -1,3 +1,64 @@
-<p>
-  register works!
-</p>
+<body>
+
+<h1>
+  Register
+</h1>
+
+<div>
+  <form #registerForm="ngForm" (ngSubmit)="register(registerForm.value)">
+  
+    <label for="name">Name</label>
+    <input
+      id="name"
+      type="text"
+      ngModel
+      #name
+      name="name"
+      placeholder="Name"
+      required
+    >
+  
+    <label for="email">Email</label>
+    <input
+      id="email"
+      type="email"
+      ngModel
+      #email
+      name="email"
+      placeholder="example@example.com"
+      required
+    >
+  
+    <label for="password">Password</label>
+    <input
+      id="password"
+      type="password"
+      ngModel
+      #password
+      name="password"
+      placeholder="Password"
+      pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
+      required
+    >
+  
+    <label for="confirmPassword">Confirm password</label>
+    <input
+      id="confirmPassword"
+      type="password"
+      ngModel
+      #confirmPassword
+      name="confirmPassword"
+      placeholder="Must match password"
+      required
+    >
+  
+    <button type="submit">Register</button>
+  
+  </form>
+</div>
+
+<p>Already have an account? <a routerLink="/login">Login</a> here</p>
+
+<p>{{registerForm.value | json}}</p>
+
+</body>

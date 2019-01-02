@@ -14,9 +14,13 @@ export class RegisterComponent implements OnInit {
     private router: Router
   ) { }
 
-  register(details: {email: string, password: string}) {
+  register(details: {name: string, email: string, password: string, confirmPassword: string}) {
+    console.log("hi");
     this.authService.register(details.email, details.password)
-      .then(() => this.router.navigate(['']))
+      .then(() => {
+        this.authService.setName(details.name);
+        this.router.navigate(['']);
+      })
       .catch((error) => console.log("There was an error registering: " + error));
   }
 
