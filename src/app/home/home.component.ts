@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { IPresent, AuthService } from '../services/auth.service';
+import { IPresent, AuthService, IPresentInput } from '../services/auth.service';
 import { PresentService } from '../services/present.service';
 
 @Component({
@@ -27,6 +27,24 @@ export class HomeComponent implements OnInit {
 
   logout() {
     this.authService.logout;
+  }
+
+  addData(data: IPresentInput) {
+    this.presentService.addData(data)
+      .then(() => console.log(data + " added to firebase"))
+      .catch((error) => console.log("There was an error adding to firebase: " + error));
+  }
+
+  deletePresent(docID: string) {
+    this.presentService.deletePresent(docID);
+  }
+
+  showHideUpdateForm(data) {
+    this.presentService.showHideUpdateForm(data.id, data.hideEdit);
+  }
+  
+  updateData(data: IPresentInput, docID: string) {
+    this.presentService.updateData(data, docID);
   }
 
   ngOnInit() {

@@ -5,15 +5,19 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators'
 
-export interface IPresent {
-  dateOpened: Date,
+export interface IPresentInput {
   picture: string,
-  rating: number,
-  thanked: boolean,
-  userID: string,
+  rating: number,  
   whatItWas: string,
   whoFrom: string,
   whoTo: string
+}
+
+export interface IPresent extends IPresentInput {
+  dateOpened: Date,
+  hideEdit: boolean,
+  thanked: boolean,
+  userID: string
 }
 
 @Injectable({
