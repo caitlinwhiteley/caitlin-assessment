@@ -4,25 +4,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators'
-
-export interface IPresentInput {
-  picture: string,
-  rating: number,  
-  whatItWas: string,
-  whoFrom: string,
-  whoTo: string
-}
-
-export interface IPresent extends IPresentInput {
-  dateOpened: Date,
-  hideEdit: boolean,
-  thanked: boolean,
-  userID: string
-}
-
-export interface IPresentID extends IPresent {
-  id: string
-}
+import { IPresent } from './present.service';
 
 @Injectable({
   providedIn: 'root'

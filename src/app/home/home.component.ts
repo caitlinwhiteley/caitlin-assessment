@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { IPresent, AuthService, IPresentInput, IPresentID } from '../services/auth.service';
-import { PresentService } from '../services/present.service';
+import { AuthService } from '../services/auth.service';
+import { PresentService, IPresent, IPresentInput, IPresentID } from '../services/present.service';
 
 @Component({
   selector: 'app-home',
@@ -13,7 +13,6 @@ export class HomeComponent implements OnInit {
   presents: Observable<IPresent[]>;
   user;
   isLoggedIn: boolean;
-  // displayName: string;
 
   constructor(
     private authService: AuthService,
@@ -22,7 +21,6 @@ export class HomeComponent implements OnInit {
     this.user = this.authService.user;
     this.presents = this.authService.presents;
     this.isLoggedIn = this.authService.isLoggedIn;
-    // this.displayName = this.authService.user.displayName;
   }
 
   logout() {
