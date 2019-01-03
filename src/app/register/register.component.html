@@ -4,8 +4,6 @@
   Register
 </h1>
 
-<p>Logged in? {{isLoggedIn}}</p>
-
 <div>
   <form #registerForm="ngForm" (ngSubmit)="register(registerForm.value)">
   
@@ -75,7 +73,7 @@
   
   </form>
 </div>
-
+ 
 <p>Already have an account? <a routerLink="/login">Login</a> here</p>
 
 <p>{{registerForm.value | json}}</p>

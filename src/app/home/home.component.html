@@ -1,35 +1,36 @@
 <body>
 
-    <img src="../assets/images/ribbon.png" alt="present ribbon" id="ribbon">
-
-    <img 
-      src="../assets/images/santa-hat.png" 
-      alt="santa hat logout button" 
-      id="logout-hat"
-    >
-    <button class="logout-text hat-button" (click)="logout()">
-      Logout
-    </button>
-
-    <img 
-      src="../assets/images/santa-hat.png" 
-      alt="santa hat create cards button" 
-      id="letter-hat"
-    >
-    <button class="letter-text hat-button" routerLink="thank-you-letters">
-      Thank you letters
-    </button>
-
-
-
-  <h1>Presents....</h1>
+    <header>
+      <img src="../assets/images/ribbon.png" alt="present ribbon" id="ribbon">
   
-  <p>Hi {{user.displayName}}! Logged in? {{isLoggedIn}}</p>
+      <img 
+        src="../assets/images/santa-hat.png" 
+        alt="santa hat logout button" 
+        id="logout-hat"
+      >
+      <button class="logout-text hat-button" (click)="logout()">
+        Logout
+      </button>
   
-  <div>
+      <img 
+        src="../assets/images/santa-hat.png" 
+        alt="santa hat create cards button" 
+        id="letter-hat"
+      >
+      <button class="letter-text hat-button" routerLink="thank-you-letters">
+        Thank you letters
+      </button>
+    </header>
+
+
+
+  <h1>Hi {{user.displayName}}</h1>
+
+  
+  <div class="add-data">
     <h2>Add data</h2>
 
-    <form #addDataForm="ngForm" (ngSubmit)="addData(addDataForm.value); addDataForm.reset()">
+    <form class="add-data-form" #addDataForm="ngForm" (ngSubmit)="addData(addDataForm.value); addDataForm.reset()">
 
         <label for="who-from">Who was the present from?</label>
         <input

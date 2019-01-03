@@ -2,8 +2,6 @@
 
 <h1>Login</h1>
 
-<p>Logged in? {{isLoggedIn}}</p>
-
 <form #loginForm="ngForm" (ngSubmit)="login(loginForm.value)">
 
   <label for="email">Email</label>
@@ -40,7 +38,5 @@
 
 <p>Don't have an account yet? <a routerLink="/register">Register</a> here</p>
 
-<!-- Error for if username or password incorrect
-     Disable button until forms completed? -->
 
 </body>
