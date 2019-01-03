@@ -14,38 +14,47 @@
           id="who-from"
           type="text"
           ngModel
-          #whoFrom
+          #whoFrom="ngModel"
           name="whoFrom"
           required
         >
+        <div *ngIf="whoFrom.touched && whoFrom.invalid">
+            Required
+        </div>
     
         <label for="who-to">Who was the present for?</label>
         <input
           id="who-to"
           type="text"
           ngModel
-          #whoTo
+          #whoTo="ngModel"
           name="whoTo"
           required
         >
+        <div *ngIf="whoTo.touched && whoTo.invalid">
+          Required
+        </div>
     
         <label for="what-it-was">What was the present?</label>
         <textarea
           id="what-it-was"
           type="text"
           ngModel
-          #whatItWas
+          #whatItWas="ngModel"
           name="whatItWas"
           rows="3"
           required
         ></textarea>
+        <div *ngIf="whatItWas.touched && whatItWas.invalid">
+          Required
+        </div>
     
         <label for="picture">Upload a picture</label>
         <input
           id="picture"
           type="text"
           ngModel
-          #picture
+          #picture="ngModel"
           name="picture"
           required
         >
@@ -55,11 +64,14 @@
           id="rating"
           type="range"
           ngModel
-          #rating
+          #rating="ngModel"
           name="rating"
           min="0" max="5"
           required
         >
+        <div *ngIf="rating.touched && rating.invalid">
+          Required
+        </div>
       
         <button type="submit">Add</button>
       
@@ -88,38 +100,47 @@
             id="who-from-update"
             type="text"
             [(ngModel)]="present.whoFrom"
-            #whoFrom
+            #whoFromUpdate="ngModel"
             name="whoFrom"
             required
           >
+          <div *ngIf="whoFromUpdate.touched && whoFromUpdate.invalid">
+            Required
+          </div>
       
           <label for="who-to-update">Who was the present for?</label>
           <input
             id="who-to-update"
             type="text"
             [(ngModel)]="present.whoTo"
-            #whoTo
+            #whoToUpdate="ngModel"
             name="whoTo"
             required
           >
+          <div *ngIf="whoToUpdate.touched && whoToUpdate.invalid">
+            Required
+          </div>
       
           <label for="what-it-was-update">What was the present?</label>
           <textarea
             id="what-it-was-update"
             type="text"
             [(ngModel)]="present.whatItWas"
-            #whatItWas
+            #whatItWasUpdate="ngModel"
             name="whatItWas"
             rows="3"
             required
           ></textarea>
+          <div *ngIf="whatItWasUpdate.touched && whatItWasUpdate.invalid">
+            Required
+          </div>
       
           <label for="picture-update">Upload a picture</label>
           <input
             id="picture-update"
             type="text"
             [(ngModel)]="present.picture"
-            #picture
+            #picture="ngModel"
             name="picture"
             required
           >
@@ -129,11 +150,14 @@
             id="rating-update"
             type="range"
             [(ngModel)]="present.rating"
-            #rating
+            #ratingUpdate="ngModel"
             name="rating"
             min="0" max="5"
             required
           >
+          <div *ngIf="ratingUpdate.touched && ratingUpdate.invalid">
+            Required
+          </div>
 
           <p>{{present | json}}</p>
 
