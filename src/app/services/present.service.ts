@@ -35,11 +35,9 @@ export class PresentService {
   }
 
   updateData(data: IPresentInput, docID: string) {
-    console.log("hi")
-    const editPresent = {
+    const editPresent: IPresentInput = {
       picture: data.picture,
       rating: data.rating,
-      hideEdit: true,
       whatItWas: data.whatItWas,
       whoFrom: data.whoFrom,
       whoTo: data.whoTo

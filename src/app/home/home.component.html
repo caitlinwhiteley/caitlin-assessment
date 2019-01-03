@@ -1,7 +1,8 @@
 <body>
   <h1>Presents....</h1>
   
-  <p>Hi {{user.displayName}}</p>
+  <p>Hi {{user.displayName}}! Logged in? {{isLoggedIn}}</p>
+  <button (click)="logout()">Logout</button>
   
   <div>
     <h2>Add data</h2>
@@ -80,7 +81,7 @@
       <button (click)="deletePresent(present.id)">Delete</button>
       
 
-      <form #updateForm="ngForm" (ngSubmit)="updateData(updateForm.value, present.id)" [hidden]="present.hideEdit">
+      <form #updateForm="ngForm" (ngSubmit)="updateData(updateForm.value, present)" [hidden]="present.hideEdit">
 
           <label for="who-from-update">Who was the present from?</label> 
           <input

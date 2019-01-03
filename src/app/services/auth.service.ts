@@ -20,6 +20,10 @@ export interface IPresent extends IPresentInput {
   userID: string
 }
 
+export interface IPresentID extends IPresent {
+  id: string
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -68,7 +72,7 @@ export class AuthService {
 
   logout() {
     this.afAuth.auth.signOut()
-      .then(() => this.router.navigate['login'])
+      .then(() => this.router.navigate(['login']))
       .catch((error) => console.log("An error occured logging out: " + error));
   }
 

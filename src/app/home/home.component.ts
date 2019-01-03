@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { IPresent, AuthService, IPresentInput } from '../services/auth.service';
+import { IPresent, AuthService, IPresentInput, IPresentID } from '../services/auth.service';
 import { PresentService } from '../services/present.service';
 
 @Component({
@@ -26,7 +26,7 @@ export class HomeComponent implements OnInit {
   }
 
   logout() {
-    this.authService.logout;
+    this.authService.logout();
   }
 
   addData(data: IPresentInput) {
@@ -39,12 +39,16 @@ export class HomeComponent implements OnInit {
     this.presentService.deletePresent(docID);
   }
 
-  showHideUpdateForm(data) {
-    this.presentService.showHideUpdateForm(data.id, data.hideEdit);
+  showHideUpdateForm(present: IPresentID) {
+    this.presentService.showHideUpdateForm(present.id, present.hideEdit)
+      .then(() => console.log("Update form successfully shown/hidden"))
+      .catch((error) => console.log("There was an error showing/hiding the update form: " + error));
   }
   
-  updateData(data: IPresentInput, docID: string) {
-    this.presentService.updateData(data, docID);
+  updateData(data: IPresentInput, present: IPresentID) {
+    this.presentService.updateData(data, present.id)
+      .then(() => this.presentService.showHideUpdateForm(present.id, present.hideEdit))
+      .catch((error) => console.log("There was an error updating the present: " + error));
   }
 
   ngOnInit() {

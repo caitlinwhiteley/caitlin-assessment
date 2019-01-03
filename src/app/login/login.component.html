@@ -2,7 +2,9 @@
 
 <h1>Login</h1>
 
-<form #loginForm="ngForm" (onSubmit)="login(loginForm.value)">
+<p>Logged in? {{isLoggedIn}}</p>
+
+<form #loginForm="ngForm" (ngSubmit)="login(loginForm.value)">
 
   <label for="email">Email</label>
   <input
