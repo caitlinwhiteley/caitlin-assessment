@@ -2,3 +2,74 @@
     background-color: blueviolet;
     display: block
 }
+
+body {
+    margin-top: 100px;
+    background-color: rgba(220, 220, 220, 0.6);
+    border-radius: 35px;
+    border: solid rgb(248,47,47) 30px;
+    padding: 20px;
+    position: relative;
+}
+
+p {
+   margin: 0;
+   text-align: center; 
+}
+
+.hat-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 120px;
+    height: 40px;
+    position: absolute;
+    z-index: 10;
+}
+
+.hat-button:hover {
+    opacity: 0.4;
+}
+
+#ribbon {
+    height: 200px;
+    display: block;
+    margin-bottom: -120px;
+    margin-left: -98.5px;
+    position: absolute;
+    top: -120px;
+    left: 50%;
+}
+
+
+#logout-hat {
+    height: 180px;
+    margin: 0 auto -120px 0;
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    position: absolute;
+    left: -55px;
+    top: -100px;
+}
+
+#letter-hat {
+    height: 180px;
+    margin: 0 0 -120px auto;
+    position: absolute;
+    right: -55px;
+    top: -100px;
+}
+
+.logout-text {
+    left: -28px;
+    top: -62px;
+    transform: rotate(-15deg);
+    font-size: 1.2em;
+}
+
+.letter-text {
+    right: -30px;
+    top: -62px;
+    transform: rotate(15deg);
+    font-size: 0.9em;
+}

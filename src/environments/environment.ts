@@ -5,12 +5,12 @@
 export const environment = {
   production: false,
   firebase: {
-    apiKey: "AIzaSyAyh-SzDh3B7kusr61ndsgOKdAWziAgvew",
-    authDomain: "caitlin-assessment.firebaseapp.com",
-    databaseURL: "https://caitlin-assessment.firebaseio.com",
-    projectId: "caitlin-assessment",
-    storageBucket: "caitlin-assessment.appspot.com",
-    messagingSenderId: "645738136143"
+    apiKey: 'AIzaSyAyh-SzDh3B7kusr61ndsgOKdAWziAgvew',
+    authDomain: 'caitlin-assessment.firebaseapp.com',
+    databaseURL: 'https://caitlin-assessment.firebaseio.com',
+    projectId: 'caitlin-assessment',
+    storageBucket: 'caitlin-assessment.appspot.com',
+    messagingSenderId: '645738136143'
   }
 };
 

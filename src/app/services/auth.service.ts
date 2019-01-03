@@ -3,7 +3,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators'
+import { map } from 'rxjs/operators';
 import { IPresent } from './present.service';
 
 @Injectable({
@@ -55,14 +55,14 @@ export class AuthService {
   logout() {
     this.afAuth.auth.signOut()
       .then(() => this.router.navigate(['login']))
-      .catch((error) => console.log("An error occured logging out: " + error));
+      .catch((error) => console.log('An error occured logging out: ' + error));
   }
 
   setName(name) {
     return this.afAuth.auth.currentUser.updateProfile({
       displayName: name,
       photoURL: 'https://i.pinimg.com/236x/b3/73/59/b373595c473299efe893572dd160f861--xmas-songs-song-with-lyrics.jpg'
-    })
+    });
   }
 
 }

@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private presentService: PresentService
-  ) { 
+  ) {
     this.user = this.authService.user;
     this.presents = this.authService.presents;
     this.isLoggedIn = this.authService.isLoggedIn;
@@ -29,8 +29,8 @@ export class HomeComponent implements OnInit {
 
   addData(data: IPresentInput) {
     this.presentService.addData(data)
-      .then(() => console.log(data + " added to firebase"))
-      .catch((error) => console.log("There was an error adding to firebase: " + error));
+      .then(() => console.log(data + ' added to firebase'))
+      .catch((error) => console.log('There was an error adding to firebase: ' + error));
   }
 
   deletePresent(docID: string) {
@@ -39,14 +39,14 @@ export class HomeComponent implements OnInit {
 
   showHideUpdateForm(present: IPresentID) {
     this.presentService.showHideUpdateForm(present.id, present.hideEdit)
-      .then(() => console.log("Update form successfully shown/hidden"))
-      .catch((error) => console.log("There was an error showing/hiding the update form: " + error));
+      .then(() => console.log('Update form successfully shown/hidden'))
+      .catch((error) => console.log('There was an error showing/hiding the update form: ' + error));
   }
-  
+
   updateData(data: IPresentInput, present: IPresentID) {
     this.presentService.updateData(data, present.id)
       .then(() => this.presentService.showHideUpdateForm(present.id, present.hideEdit))
-      .catch((error) => console.log("There was an error updating the present: " + error));
+      .catch((error) => console.log('There was an error updating the present: ' + error));
   }
 
   updateThanked(thanked: boolean, docID: string) {
