@@ -8,10 +8,4 @@ import { AuthService } from './services/auth.service';
 })
 export class AppComponent {
   title = 'ngPresents';
-
-  constructor(private authService: AuthService) {}
-
-  logout() {
-    this.authService.logout();
-  }
 }
