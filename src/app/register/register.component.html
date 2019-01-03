@@ -36,25 +36,42 @@
       id="password"
       type="password"
       ngModel
-      #password
+      #password="ngModel"
       name="password"
       placeholder="Password"
       pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
       required
     >
+
+  
+    <div *ngIf="passwordy.touched && passwordy.invalid">
+      <p>Password must contain:</p>
+      <ul>
+        <li>At least 6 characters</li>
+        <li>Both lowercase and uppercase letters</li>
+        <li>Numbers</li>
+      </ul>
+    </div>
   
     <label for="confirmPassword">Confirm password</label>
     <input
       id="confirmPassword"
       type="password"
       ngModel
-      #confirmPassword
+      #confirmPassword="ngModel"
       name="confirmPassword"
       placeholder="Must match password"
       required
     >
+
+    <p *ngIf="confirmPassword.touched && password.value != confirmPassword.value">
+      Passwords don't match
+    </p>
+
   
-    <button type="submit">Register</button>
+    <button type="submit" [disabled]="registerForm.invalid || password.value != confirmPassword.value">
+      Register
+    </button>
   
   </form>
 </div>
