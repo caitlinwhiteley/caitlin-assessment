@@ -7,7 +7,7 @@
   <div>
     <h2>Add data</h2>
 
-    <form #addDataForm="ngForm" (ngSubmit)="addData(addDataForm.value)">
+    <form #addDataForm="ngForm" (ngSubmit)="addData(addDataForm.value); addDataForm.reset()">
 
         <label for="who-from">Who was the present from?</label>
         <input
@@ -87,7 +87,16 @@
       <p> Picture is of: {{present.picture}} </p>
       <p> From {{present.whoFrom}} to {{present.whoTo}} </p>
       <p> Present rating: {{present.rating}} </p>
-      <p> Thanked? {{present.thanked}} </p>
+      <p> Present was received on {{present.dateOpened.toDate() | date}} </p>
+      <p> 
+        Thank you letter sent 
+        <input
+          type="checkbox"
+          [(ngModel)]="present.thanked"
+          name="thanked"
+          (change)="updateThanked(present.thanked, present.id)"
+        >
+      </p>
 
       <button (click)="showHideUpdateForm(present)">Edit info</button>
       <button (click)="deletePresent(present.id)">Delete</button>

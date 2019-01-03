@@ -64,4 +64,10 @@ export class PresentService {
     return this.authService.presentsCollection.doc(docID).update(editPresent);
   }
 
+  updateThanked(thanked: boolean, docID: string) {
+    return this.authService.presentsCollection.doc(docID).update({
+      thanked: thanked
+    });
+  }
+
 }

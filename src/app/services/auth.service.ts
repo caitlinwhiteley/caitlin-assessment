@@ -20,7 +20,7 @@ export class AuthService {
 
   get presentsCollection() {
     return this.afs.collection<IPresent>('presents',
-    (ref) => ref.where('userID', '==', this.user.uid));
+    (ref) => ref.where('userID', '==', this.user.uid).orderBy('thanked'));
   }
 
   get presents(): Observable<IPresent[]> {

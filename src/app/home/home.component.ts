@@ -49,6 +49,10 @@ export class HomeComponent implements OnInit {
       .catch((error) => console.log("There was an error updating the present: " + error));
   }
 
+  updateThanked(thanked: boolean, docID: string) {
+    this.presentService.updateThanked(thanked, docID);
+  }
+
   ngOnInit() {
   }
 
