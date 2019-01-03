@@ -2,22 +2,22 @@ import { Injectable } from '@angular/core';
 import { AuthService } from './auth.service';
 
 export interface IPresentInput {
-  picture: string,
-  rating: number,  
-  whatItWas: string,
-  whoFrom: string,
-  whoTo: string
+  picture: string;
+  rating: number;
+  whatItWas: string;
+  whoFrom: string;
+  whoTo: string;
 }
 
 export interface IPresent extends IPresentInput {
-  dateOpened: Date,
-  hideEdit: boolean,
-  thanked: boolean,
-  userID: string
+  dateOpened: Date;
+  hideEdit: boolean;
+  thanked: boolean;
+  userID: string;
 }
 
 export interface IPresentID extends IPresent {
-  id: string
+  id: string;
 }
 
 @Injectable({
@@ -38,7 +38,7 @@ export class PresentService {
       whatItWas: data.whatItWas,
       whoFrom: data.whoFrom,
       whoTo: data.whoTo
-    }
+    };
     return this.authService.presentsCollection.add(newPresent);
   }
 
@@ -60,7 +60,7 @@ export class PresentService {
       whatItWas: data.whatItWas,
       whoFrom: data.whoFrom,
       whoTo: data.whoTo
-    }
+    };
     return this.authService.presentsCollection.doc(docID).update(editPresent);
   }
 

@@ -13,13 +13,15 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { AuthGuardService } from './services/auth-guard.service';
+import { LettersComponent } from './letters/letters.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RegisterComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    LettersComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +32,8 @@ import { AuthGuardService } from './services/auth-guard.service';
     RouterModule.forRoot([
       {path: 'login', component: LoginComponent},
       {path: 'register', component: RegisterComponent},
-      {path: '', component: HomeComponent, canActivate: [AuthGuardService]}
+      {path: '', component: HomeComponent, canActivate: [AuthGuardService]},
+      {path: 'thank-you-letters', component: LettersComponent, canActivate: [AuthGuardService]}
     ])
   ],
   providers: [AuthGuardService],

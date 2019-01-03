@@ -1,8 +1,30 @@
 <body>
+
+    <img src="../assets/images/ribbon.png" alt="present ribbon" id="ribbon">
+
+    <img 
+      src="../assets/images/santa-hat.png" 
+      alt="santa hat logout button" 
+      id="logout-hat"
+    >
+    <button class="logout-text hat-button" (click)="logout()">
+      Logout
+    </button>
+
+    <img 
+      src="../assets/images/santa-hat.png" 
+      alt="santa hat create cards button" 
+      id="letter-hat"
+    >
+    <button class="letter-text hat-button" routerLink="thank-you-letters">
+      Thank you letters
+    </button>
+
+
+
   <h1>Presents....</h1>
   
   <p>Hi {{user.displayName}}! Logged in? {{isLoggedIn}}</p>
-  <button (click)="logout()">Logout</button>
   
   <div>
     <h2>Add data</h2>

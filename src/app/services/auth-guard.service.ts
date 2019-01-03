@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router, CanActivate } from '@angular/router';
 import { Observable } from 'rxjs';
-import { first, map } from 'rxjs/operators'
+import { first, map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +10,7 @@ import { first, map } from 'rxjs/operators'
 export class AuthGuardService implements CanActivate {
 
   constructor(
-    private firebaseAuth: AngularFireAuth, 
+    private firebaseAuth: AngularFireAuth,
     private router: Router
   ) { }
 

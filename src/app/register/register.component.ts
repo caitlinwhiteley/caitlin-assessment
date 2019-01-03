@@ -15,13 +15,13 @@ export class RegisterComponent implements OnInit {
   ) { }
 
   register(details: {name: string, email: string, password: string, confirmPassword: string}) {
-    console.log("hi");
+    console.log('hi');
     this.authService.register(details.email, details.password)
       .then(() => {
         this.authService.setName(details.name);
         this.router.navigate(['']);
       })
-      .catch((error) => console.log("There was an error registering: " + error));
+      .catch((error) => console.log('There was an error registering: ' + error));
   }
 
   ngOnInit() {

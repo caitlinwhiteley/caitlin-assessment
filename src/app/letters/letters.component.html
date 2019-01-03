@@ -1,0 +1,55 @@
+<button routerLink="/">Go Back</button>
+
+<div>
+
+    <div *ngFor="let present of presents | async">
+
+      <div *ngIf="present.thanked==false" class="present">
+        <div class="thanks">
+          THANK YOU!
+        </div>
+  
+  
+        <div class="tree-image">
+          <img src="assets/images/xmas-tree.png" alt="christmas tree">
+        </div>
+  
+  
+        <div class="letter-text">
+          <p>Dear {{present.whoTo}},</p>
+    
+          <p *ngIf="present.rating==5">
+            Thank you so so much for the {{present.whatItWas}}! I absolutely love it!
+            I couldn't have asked for a better gift :)
+          </p>
+    
+          <p *ngIf="present.rating==3 || present.rating==4">
+            Thank you so much for the {{present.whatItWas}}! It is really great!
+          </p>
+    
+          <p *ngIf="present.rating==2 || present.rating==1">
+            Thanks for the {{present.whatItWas}}. I appreciate the thought you put into the gift.
+          </p>
+    
+          <p *ngIf="present.rating==0">
+            Thanks for the {{present.whatItWas}}.
+          </p>
+    
+          <p *ngIf="present.rating==5 || present.rating==4 || present.rating==3">
+            Love from,
+          </p>
+    
+          <p *ngIf="present.rating==2 || present.rating==1 || present.rating==0">
+            From,
+          </p>
+    
+          <p>{{present.whoFrom}}</p>
+        </div>
+      </div>
+
+ 
+    </div>
+
+
+
+</div>

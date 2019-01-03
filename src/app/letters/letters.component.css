@@ -1,0 +1,36 @@
+* {
+    font-family: 'Dancing Script', cursive;
+}
+
+.present {
+    border: groove green 5px;
+    margin: 50px 10px;
+    padding: 30px;
+    /* background-image: url('../../assets/images/holly-background.jpg'); */
+    background-color: rgba(0, 255, 0, 0.2);
+    border-radius: 10px;
+}
+
+img {
+    height: 200px;
+    display: block;
+    margin: 0 auto;
+}
+
+.thanks {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2em;
+    font-family: 'Luckiest Guy', cursive;
+}
+
+button {
+    font-family: inherit;
+}
+
+@media only screen and (min-width: 420px) {
+    .present {
+      width: 300px;
+      margin: 50px auto 150px auto;
+    }
+  }
