@@ -24,10 +24,8 @@ label {
 button {
     display: block;
     margin: 5px auto 30px auto;
-    /* border-radius: 5px;  */
     border: solid white 2px;
-    /* background-color: rgba(237, 58, 64, 0.5); */
-    background-color: rgb(15, 170, 170);
+    background-color: transparent;
     color: white;
     padding: 6px
 }
@@ -35,7 +33,8 @@ button {
 button:hover {
     cursor: pointer;
     background-color: white;
-    color: rgb(15, 170, 170);
+    color: black;
+    text-shadow: none;
 }
 
 .bottom-buttons {
@@ -52,7 +51,7 @@ button:hover {
     border: solid white 3px;
     border-radius: 2px;
     padding: 10px;
-    background-color: rgb(15, 170, 170);
+    background-color: rgba(255, 255, 255, 0.4);
 }
 
 input {
@@ -67,5 +66,5 @@ input {
 .error-message {
     font-size: 0.7em;
     margin-bottom: 20px;
-    color: rgb(15, 170, 170);
+    color: red;
 }
