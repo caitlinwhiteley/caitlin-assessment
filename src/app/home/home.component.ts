@@ -13,20 +13,11 @@ export class HomeComponent implements OnInit {
   presents: Observable<IPresent[]>;
   user;
   isLoggedIn: boolean;
-  max: number = 5;
-  rate: number = 0;
-  isReadonly: boolean = false;
+  max = 5;
+  rate = 0;
+  isReadonly = false;
   overStar: number;
   percent: number;
-
-  hoveringOver(value: number): void {
-    this.overStar = value;
-    this.percent = (value / this.max) * 100;
-  }
- 
-  resetStar(): void {
-    this.overStar = void 0;
-  }
 
   constructor(
     private authService: AuthService,
@@ -65,6 +56,16 @@ export class HomeComponent implements OnInit {
 
   updateThanked(thanked: boolean, docID: string) {
     this.presentService.updateThanked(thanked, docID);
+  }
+
+
+  hoveringOver(value: number): void {
+    this.overStar = value;
+    this.percent = (value / this.max) * 100;
+  }
+
+  resetStar(): void {
+    this.overStar = void 0;
   }
 
   ngOnInit() {

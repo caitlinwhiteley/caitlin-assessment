@@ -1,7 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
 
 * {
-    font-family: 'Work Sans', sans-serif;
+    font-family: 'Raleway', sans-serif;
+}
+
+i {
+    font-family: sans-serif;
 }
 
 body {

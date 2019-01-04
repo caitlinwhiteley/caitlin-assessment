@@ -1,8 +1,3 @@
-* {
-    list-style: none;
-    font-family: 'Raleway', sans-serif;
-}
-
 .present{
     background-color: rgba(255, 255, 255, 0.7);
     display: block;
@@ -92,7 +87,7 @@ p {
     position: absolute;
     left: -55px;
     top: -95px;
-}
+} 
 
 #letter-hat {
     height: 180px;
@@ -148,6 +143,10 @@ button {
 
 button:hover {
     background-color: white;
+}
+
+.hat-button:hover {
+    background-color: transparent;
 }
 
 .add-button {

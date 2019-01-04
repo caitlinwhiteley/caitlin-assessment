@@ -25,7 +25,7 @@
 <div class="body">
   
   
-    <h1><span class="small">Welcome,</span> {{user.displayName}} <i class="fa fa-address-book" aria-hidden="true"></i></h1>
+    <h1><span class="small">Welcome,</span> {{user.displayName}}</h1>
     <h2>To your personal presents service!</h2>
   
     
@@ -56,7 +56,6 @@
               <i class="fa fa-star-o" aria-hidden="true"></i>
               <i class="fa fa-star-o" aria-hidden="true"></i>
               <i class="fa fa-star-o" aria-hidden="true"></i>
-              {{present.rating}}/5
             </p>
             <p *ngIf="present.rating==2">
               <i class="fa fa-star" aria-hidden="true"></i>
@@ -64,7 +63,6 @@
               <i class="fa fa-star-o" aria-hidden="true"></i>
               <i class="fa fa-star-o" aria-hidden="true"></i>
               <i class="fa fa-star-o" aria-hidden="true"></i>
-              {{present.rating}}/5
             </p>
             <p *ngIf="present.rating==3">
               <i class="fa fa-star" aria-hidden="true"></i>
@@ -72,7 +70,6 @@
               <i class="fa fa-star" aria-hidden="true"></i>
               <i class="fa fa-star-o" aria-hidden="true"></i>
               <i class="fa fa-star-o" aria-hidden="true"></i>
-              {{present.rating}}/5
             </p>
             <p *ngIf="present.rating==4">
               <i class="fa fa-star" aria-hidden="true"></i>
@@ -80,7 +77,6 @@
               <i class="fa fa-star" aria-hidden="true"></i>
               <i class="fa fa-star" aria-hidden="true"></i>
               <i class="fa fa-star-o" aria-hidden="true"></i>
-              {{present.rating}}/5
             </p>
             <p *ngIf="present.rating==5">
               <i class="fa fa-star" aria-hidden="true"></i>
@@ -88,7 +84,6 @@
               <i class="fa fa-star" aria-hidden="true"></i>
               <i class="fa fa-star" aria-hidden="true"></i>
               <i class="fa fa-star" aria-hidden="true"></i>
-              {{present.rating}}/5
             </p>
   
             <p class="left"> From <span class="medium">{{present.whoFrom}}</span></p>
