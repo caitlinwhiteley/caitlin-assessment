@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+  registerError: Error;
 
   constructor(
     private authService: AuthService,
@@ -21,7 +22,10 @@ export class RegisterComponent implements OnInit {
         this.authService.setName(details.name);
         this.router.navigate(['']);
       })
-      .catch((error) => console.log('There was an error registering: ' + error));
+      .catch((error) => {
+        console.log('There was an error registering: ' + error);
+        this.registerError = error;
+      });
   }
 
   ngOnInit() {

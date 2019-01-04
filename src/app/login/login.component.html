@@ -2,41 +2,44 @@
 
 <h1>Login</h1>
 
-<form #loginForm="ngForm" (ngSubmit)="login(loginForm.value)">
-
-  <label for="email">Email</label>
-  <input
-    id="email"
-    ngModel
-    #email
-    name="email"
-    type="email"
-    placeholder="example@example.com"
-    required
-    autofocus
-  >
-
-  <label for="password">Password</label>
-  <input
-    id="password"
-    ngModel
-    #password
-    name="password"
-    type="password"
-    placeholder="Password"
-    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
-    required
-  >
-
-  <button type="submit">Login</button>
-
-  <p>
-    {{loginError}}
-  </p>
-
-</form>
-
-<p>Don't have an account yet? <a routerLink="/register">Register</a> here</p>
+<div>
+  <form #loginForm="ngForm" (ngSubmit)="login(loginForm.value)">
+  
+    <label for="email">Email</label>
+    <input
+      id="email"
+      ngModel
+      #email
+      name="email"
+      type="email"
+      placeholder="example@example.com"
+      required
+      autofocus
+    >
+  
+    <label for="password">Password</label>
+    <input
+      id="password"
+      ngModel
+      #password
+      name="password"
+      type="password"
+      placeholder="Password"
+      pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
+      required
+    >
+  
+    <button type="submit">Login</button>
+  
+    <p class="error-message">
+      {{loginError}}
+    </p>
+  
+  </form>
+  
+  <button class="bottom-buttons" routerLink="/register">Register</button>
+  <button class="bottom-buttons" routerLink="/">Forgotten password</button>
+</div>
 
 
 </body>

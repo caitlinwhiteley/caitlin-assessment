@@ -4,7 +4,7 @@
   Register
 </h1>
 
-<div>
+<div class="container">
   <form #registerForm="ngForm" (ngSubmit)="register(registerForm.value)">
   
     <label for="name">Name</label>
@@ -42,7 +42,7 @@
     >
 
   
-    <div *ngIf="passwordy.touched && passwordy.invalid">
+    <div *ngIf="password.touched && password.invalid" class="error-message">
       <p>Password must contain:</p>
       <ul>
         <li>At least 6 characters</li>
@@ -62,7 +62,7 @@
       required
     >
 
-    <p *ngIf="confirmPassword.touched && password.value != confirmPassword.value">
+    <p *ngIf="confirmPassword.touched && password.value != confirmPassword.value" class="error-message">
       Passwords don't match
     </p>
 
@@ -70,12 +70,16 @@
     <button type="submit" [disabled]="registerForm.invalid || password.value != confirmPassword.value">
       Register
     </button>
+
+    <p class="error-message">
+      {{registerError}}
+    </p>
   
   </form>
+
+  <button class="bottom-buttons" routerLink="/login">Return to login</button>
+
 </div>
  
-<p>Already have an account? <a routerLink="/login">Login</a> here</p>
-
-<p>{{registerForm.value | json}}</p>
 
 </body>
