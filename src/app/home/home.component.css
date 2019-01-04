@@ -1,15 +1,16 @@
 * {
     list-style: none;
+    font-family: 'Raleway', sans-serif;
 }
 
 .present{
-    background-color: rgba(45, 163, 98, 0.6);
+    background-color: rgba(255, 255, 255, 0.7);
     display: block;
-    border-radius: 15px;
+    /* border-radius: 15px; */
     padding: 45px 15px 15px 15px;
     margin-bottom: 20px;
     /* background-image: url(../../assets/images/snow.jpg); */
-    border: solid rgb(27, 138, 77) 8px;
+    border: solid white 8px;
     position: relative;
     text-align: center;
 }
@@ -22,12 +23,18 @@ body {
     padding: 20px;
     position: relative;
     background-image: url(../../assets/images/presents-background.jpg);
+    background-size: cover;
+}
+
+.body {
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 10px;
 }
 
 h1 {
     /* width: 60%; */
     display: block;
-    font-family: 'Luckiest Guy', cursive!important;
+    font-family: 'Raleway', sans-serif;
     text-align: center;
     margin: 60px auto auto auto;
     font-size: 3em;
@@ -36,7 +43,7 @@ h1 {
 h2 {
     /* width: 40%; */
     /* float: right; */
-    font-family: 'Luckiest Guy', cursive;
+    font-family: 'Raleway', sans-serif;
     text-align: center;
     margin: 20px auto;
 }
@@ -44,7 +51,7 @@ h2 {
 h3 {
     text-align: center;
     font-size: 1.7em;
-    font-family: 'Luckiest Guy', cursive;
+    font-family: 'Raleway', sans-serif;
 }
 
 p {
@@ -78,13 +85,13 @@ p {
 
 
 #logout-hat {
-    height: 180px;
+    height: 170px;
     margin: 0 auto -120px 0;
     -webkit-transform: scaleX(-1);
     transform: scaleX(-1);
     position: absolute;
     left: -55px;
-    top: -100px;
+    top: -95px;
 }
 
 #letter-hat {
@@ -104,9 +111,9 @@ p {
 
 .letter-text {
     right: -30px;
-    top: -62px;
+    top: -64px;
     transform: rotate(15deg);
-    font-size: 0.9em;
+    font-size: 0.8em;
 }
 
 label {
@@ -124,26 +131,26 @@ label {
 
 input, textarea {
     width: 100%;
-    border: solid black 1px;
-    border-radius: 4px;
+    border: solid white 2px;
+    background-color: rgba(255, 255, 255, 0.7);
     padding: 2px;
-}
-
-.add-data > input, .add-data > textarea {
-    border: solid rgb(255, 0, 34) 1px;
 }
 
 button {
     display: block;
+    color: black;
     margin: 3px auto;
     width: 90px;
-    border-radius: 4px;
     cursor: pointer;
+    background-color: rgba(220, 220, 220, 0.6);
+    border: solid white 2px;
+}
+
+button:hover {
     background-color: white;
 }
 
 .add-button {
-    border: solid rgb(255, 0, 34) 3px;
     margin-top: 20px;
 }
 
@@ -197,9 +204,7 @@ button {
 }
 
 .update-button {
-    background-color: rgb(45, 163, 98);
     margin: 10px auto;
-    border: solid black 2px;
 }
 
 .slider {
@@ -222,7 +227,7 @@ button {
     appearance: none;
     width: 15px;
     height: 15px;
-    background: rgb(255, 0, 34) ;
+    background: black ;
     cursor: pointer;
     border-radius: 50%;
 }
@@ -230,9 +235,18 @@ button {
 .slider::-moz-range-thumb {
     width: 10px;
     height: 10px;
-    background: rgb(255, 0, 34) ;
+    background: black ;
     cursor: pointer;
     border-radius: 50%;
+}
+
+#rating {
+    color: black;
+    font-size: 2em;
+}
+
+#update-form {
+    font-size: 0.8em;
 }
 
 @media only screen and (min-width: 550px) {

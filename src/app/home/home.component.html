@@ -22,266 +22,290 @@
       </button>
     </header>
 
-
-
-  <h1><span class="small">Welcome,</span> {{user.displayName}}</h1>
-  <h2>To your personal presents service!</h2>
-
+<div class="body">
   
-
-  <div class="container">
-    <div class="current-data">
-      <h3>Presents</h3>
   
-      <div *ngFor="let present of presents | async" class="present">
+    <h1><span class="small">Welcome,</span> {{user.displayName}} <i class="fa fa-address-book" aria-hidden="true"></i></h1>
+    <h2>To your personal presents service!</h2>
+  
+    
+  
+    <div class="container">
+      <div class="current-data">
+        <h3>Presents</h3>
 
-          <div class="countdown" *ngIf="present==null">
-            <p>No presents, but only</p>
+        <div *ngFor="let present of presents | async" class="present">
+  
+  
+  
+          <div>
+            <p (click)="showHideUpdateForm(present)" class="edit-present medium">
+              <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+            </p>
+  
+            <p (click)="deletePresent(present.id)" class="delete-present medium">
+                <i class="fa fa-trash-o" aria-hidden="true"></i>
+            </p>
+  
+            <p class="big"> <i class="fa fa-gift" aria-hidden="true"></i> {{present.whatItWas}}</p>
+            <!-- <p> Picture is of: {{present.picture}} </p> -->
+
+            <p *ngIf="present.rating==1">
+              <i class="fa fa-star" aria-hidden="true"></i>
+              <i class="fa fa-star-o" aria-hidden="true"></i>
+              <i class="fa fa-star-o" aria-hidden="true"></i>
+              <i class="fa fa-star-o" aria-hidden="true"></i>
+              <i class="fa fa-star-o" aria-hidden="true"></i>
+              {{present.rating}}/5
+            </p>
+            <p *ngIf="present.rating==2">
+              <i class="fa fa-star" aria-hidden="true"></i>
+              <i class="fa fa-star" aria-hidden="true"></i>
+              <i class="fa fa-star-o" aria-hidden="true"></i>
+              <i class="fa fa-star-o" aria-hidden="true"></i>
+              <i class="fa fa-star-o" aria-hidden="true"></i>
+              {{present.rating}}/5
+            </p>
+            <p *ngIf="present.rating==3">
+              <i class="fa fa-star" aria-hidden="true"></i>
+              <i class="fa fa-star" aria-hidden="true"></i>
+              <i class="fa fa-star" aria-hidden="true"></i>
+              <i class="fa fa-star-o" aria-hidden="true"></i>
+              <i class="fa fa-star-o" aria-hidden="true"></i>
+              {{present.rating}}/5
+            </p>
+            <p *ngIf="present.rating==4">
+              <i class="fa fa-star" aria-hidden="true"></i>
+              <i class="fa fa-star" aria-hidden="true"></i>
+              <i class="fa fa-star" aria-hidden="true"></i>
+              <i class="fa fa-star" aria-hidden="true"></i>
+              <i class="fa fa-star-o" aria-hidden="true"></i>
+              {{present.rating}}/5
+            </p>
+            <p *ngIf="present.rating==5">
+              <i class="fa fa-star" aria-hidden="true"></i>
+              <i class="fa fa-star" aria-hidden="true"></i>
+              <i class="fa fa-star" aria-hidden="true"></i>
+              <i class="fa fa-star" aria-hidden="true"></i>
+              <i class="fa fa-star" aria-hidden="true"></i>
+              {{present.rating}}/5
+            </p>
+  
+            <p class="left"> From <span class="medium">{{present.whoFrom}}</span></p>
+            <p class="left"> To <span class="medium">{{present.whoTo}}</span> </p>
+            <p class="left"> <span class="small">Present was received on</span> {{present.dateOpened.toDate() | date}} </p>
+            <p class="left"> 
+              Thank you letter <span class="medium">sent</span> 
+              <input
+                class="thanked-checkbox"
+                type="checkbox"
+                [(ngModel)]="present.thanked"
+                name="thanked"
+                (change)="updateThanked(present.thanked, present.id)"
+              >
+            </p>
+      
+            <!-- <button (click)="showHideUpdateForm(present)">Edit info</button>
+            <button (click)="deletePresent(present.id)">Delete</button> -->
+          </div>
+          
+    
+          <form id="update-form" #updateForm="ngForm" (ngSubmit)="updateData(updateForm.value, present)" [hidden]="present.hideEdit">
+    
+              <label for="who-from-update">Who was the present from?</label> 
+              <input
+                id="who-from-update"
+                type="text"
+                [(ngModel)]="present.whoFrom"
+                #whoFromUpdate="ngModel"
+                name="whoFrom"
+                style="text-transform: capitalize;"
+                required
+              >
+              <div *ngIf="whoFromUpdate.touched && whoFromUpdate.invalid" class="error-message">
+                Required
+              </div>
+          
+              <label for="who-to-update">Who was the present for?</label>
+              <input
+                id="who-to-update"
+                type="text"
+                [(ngModel)]="present.whoTo"
+                #whoToUpdate="ngModel"
+                name="whoTo"
+                style="text-transform: capitalize;"
+                required
+              >
+              <div *ngIf="whoToUpdate.touched && whoToUpdate.invalid" class="error-message">
+                Required
+              </div>
+          
+              <label for="what-it-was-update">What was the present?</label>
+              <textarea
+                id="what-it-was-update"
+                type="text"
+                [(ngModel)]="present.whatItWas"
+                #whatItWasUpdate="ngModel"
+                name="whatItWas"
+                rows="3"
+                required
+              ></textarea>
+              <div *ngIf="whatItWasUpdate.touched && whatItWasUpdate.invalid" class="error-message">
+                Required
+              </div>
+          
+              <label for="picture-update">Upload a picture</label>
+              <input
+                id="picture-update"
+                type="text"
+                [(ngModel)]="present.picture"
+                #picture="ngModel"
+                name="picture"
+                style="text-transform: capitalize;"
+                required
+              >
+          
+              <label for="rating-update">Rate the present out of 5</label>
+              <input
+                id="rating-update"
+                class="slider"
+                type="range"
+                [(ngModel)]="present.rating"
+                #ratingUpdate="ngModel"
+                name="rating"
+                min="1" max="5"
+                required
+              >
+              <!-- <rating
+                id="rating-update"
+                #ratingUpdate="ngModel"
+                name="ratingUpdate"
+                [(ngModel)]="rate" 
+                [max]="max" 
+                [readonly]="isReadonly"
+                (onHover)="hoveringOver($event)" 
+                (onLeave)="resetStar()"
+                [titles]="['Star 1','Star 2','Star 3','Star 4','Star 5']"
+                required 
+              ></rating> -->
+              <div *ngIf="ratingUpdate.touched && ratingUpdate.invalid" class="error-message">
+                Required
+              </div>
+    
+              <button type="submit" [disabled]="updateForm.form.invalid" class="update-button">Update</button>
+              <p (click)="showHideUpdateForm(present)" class="medium cancel-edit">
+                <i class="fa fa-minus-square-o" aria-hidden="true"></i>
+              </p>
+              
+          </form>
+    
+    
+    
+        </div>
+    
+        <div class="countdown">
+            <p>Only</p>
             <p class="big" id="countdown"></p>
             <p>days till next Christmas!</p>
           </div>
-
-        <div>
-          <p (click)="showHideUpdateForm(present)" class="edit-present medium">
-            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-          </p>
-
-          <p (click)="deletePresent(present.id)" class="delete-present medium">
-              <i class="fa fa-trash-o" aria-hidden="true"></i>
-          </p>
-
-          <p class="big"> <i class="fa fa-gift" aria-hidden="true"></i> {{present.whatItWas}} </p>
-          <!-- <p> Picture is of: {{present.picture}} </p> -->
-
-          <p *ngIf="present.rating==0">
-            <i class="fa fa-star-o" aria-hidden="true"></i>
-            <i class="fa fa-star-o" aria-hidden="true"></i>
-            <i class="fa fa-star-o" aria-hidden="true"></i>
-            <i class="fa fa-star-o" aria-hidden="true"></i>
-            <i class="fa fa-star-o" aria-hidden="true"></i>
-          </p>
-          <p *ngIf="present.rating==1">
-            <i class="fa fa-star" aria-hidden="true"></i>
-            <i class="fa fa-star-o" aria-hidden="true"></i>
-            <i class="fa fa-star-o" aria-hidden="true"></i>
-            <i class="fa fa-star-o" aria-hidden="true"></i>
-            <i class="fa fa-star-o" aria-hidden="true"></i>
-          </p>
-          <p *ngIf="present.rating==2">
-            <i class="fa fa-star" aria-hidden="true"></i>
-            <i class="fa fa-star" aria-hidden="true"></i>
-            <i class="fa fa-star-o" aria-hidden="true"></i>
-            <i class="fa fa-star-o" aria-hidden="true"></i>
-            <i class="fa fa-star-o" aria-hidden="true"></i>
-          </p>
-          <p *ngIf="present.rating==3">
-            <i class="fa fa-star" aria-hidden="true"></i>
-            <i class="fa fa-star" aria-hidden="true"></i>
-            <i class="fa fa-star" aria-hidden="true"></i>
-            <i class="fa fa-star-o" aria-hidden="true"></i>
-            <i class="fa fa-star-o" aria-hidden="true"></i>
-          </p>
-          <p *ngIf="present.rating==4">
-            <i class="fa fa-star" aria-hidden="true"></i>
-            <i class="fa fa-star" aria-hidden="true"></i>
-            <i class="fa fa-star" aria-hidden="true"></i>
-            <i class="fa fa-star" aria-hidden="true"></i>
-            <i class="fa fa-star-o" aria-hidden="true"></i>
-          </p>
-          <p *ngIf="present.rating==5">
-            <i class="fa fa-star" aria-hidden="true"></i>
-            <i class="fa fa-star" aria-hidden="true"></i>
-            <i class="fa fa-star" aria-hidden="true"></i>
-            <i class="fa fa-star" aria-hidden="true"></i>
-            <i class="fa fa-star" aria-hidden="true"></i>
-          </p>
-
-          <p class="left"> From <span class="medium">{{present.whoFrom}}</span></p>
-          <p class="left"> To <span class="medium">{{present.whoTo}}</span> </p>
-          <p class="left"> <span class="small">Present was received on</span> {{present.dateOpened.toDate() | date}} </p>
-          <p class="left"> 
-            Thank you letter <span class="medium">sent</span> 
-            <input
-              class="thanked-checkbox"
-              type="checkbox"
-              [(ngModel)]="present.thanked"
-              name="thanked"
-              (change)="updateThanked(present.thanked, present.id)"
-            >
-          </p>
+      </div>
     
-          <!-- <button (click)="showHideUpdateForm(present)">Edit info</button>
-          <button (click)="deletePresent(present.id)">Delete</button> -->
-        </div>
-        
-  
-        <form #updateForm="ngForm" (ngSubmit)="updateData(updateForm.value, present)" [hidden]="present.hideEdit">
-  
-            <label for="who-from-update">Who was the present from?</label> 
+    
+    
+    
+      <div class="add-data">
+        <h3>Add a present</h3>
+    
+        <form class="add-data-form" #addDataForm="ngForm" (ngSubmit)="addData(addDataForm.value); addDataForm.reset()">
+    
+            <label for="who-from">Who was the present from?</label>
             <input
-              id="who-from-update"
+              id="who-from"
               type="text"
-              [(ngModel)]="present.whoFrom"
-              #whoFromUpdate="ngModel"
+              ngModel
+              #whoFrom="ngModel"
               name="whoFrom"
               style="text-transform: capitalize;"
               required
             >
-            <div *ngIf="whoFromUpdate.touched && whoFromUpdate.invalid" class="error-message">
-              Required
+            <div *ngIf="whoFrom.touched && whoFrom.invalid" class="error-message">
+                Required
             </div>
         
-            <label for="who-to-update">Who was the present for?</label>
+            <label for="who-to">Who was the present for?</label>
             <input
-              id="who-to-update"
+              id="who-to"
               type="text"
-              [(ngModel)]="present.whoTo"
-              #whoToUpdate="ngModel"
+              ngModel
+              #whoTo="ngModel"
               name="whoTo"
               style="text-transform: capitalize;"
               required
             >
-            <div *ngIf="whoToUpdate.touched && whoToUpdate.invalid" class="error-message">
+            <div *ngIf="whoTo.touched && whoTo.invalid" class="error-message">
               Required
             </div>
         
-            <label for="what-it-was-update">What was the present?</label>
+            <label for="what-it-was">What was the present?</label>
             <textarea
-              id="what-it-was-update"
+              id="what-it-was"
               type="text"
-              [(ngModel)]="present.whatItWas"
-              #whatItWasUpdate="ngModel"
+              ngModel
+              #whatItWas="ngModel"
               name="whatItWas"
               rows="3"
               required
             ></textarea>
-            <div *ngIf="whatItWasUpdate.touched && whatItWasUpdate.invalid" class="error-message">
+            <div *ngIf="whatItWas.touched && whatItWas.invalid" class="error-message">
               Required
             </div>
         
-            <label for="picture-update">Upload a picture</label>
+            <label for="picture">Upload a picture</label>
             <input
-              id="picture-update"
-              type="text"
-              [(ngModel)]="present.picture"
+              id="picture"
+              type="upload"
+              ngModel
               #picture="ngModel"
               name="picture"
               style="text-transform: capitalize;"
               required
             >
         
-            <label for="rating-update">Rate the present out of 5</label>
-            <input
-              id="rating-update"
+            <label for="rating">Rate the present out of 5</label>
+            <!-- <input
+              id="rating"
               class="slider"
               type="range"
-              [(ngModel)]="present.rating"
-              #ratingUpdate="ngModel"
+              ngModel
+              #rating="ngModel"
               name="rating"
               min="0" max="5"
               required
-            >
-            <div *ngIf="ratingUpdate.touched && ratingUpdate.invalid" class="error-message">
+            > -->
+
+            <rating
+              id="rating"
+              #rating="ngModel"
+              name="rating"
+              [(ngModel)]="rate" 
+              [max]="max" 
+              [readonly]="isReadonly"
+              (onLeave)="resetStar()"
+              required 
+            ></rating>
+
+            <div *ngIf="rating.touched && rating.invalid" class="error-message">
               Required
             </div>
-  
-            <button type="submit" [disabled]="updateForm.form.invalid" class="update-button">Update</button>
-            <p (click)="showHideUpdateForm(present)" class="medium cancel-edit">
-              <i class="fa fa-minus-square-o" aria-hidden="true"></i>
-            </p>
-            
-        </form>
-  
-  
-  
+          
+            <button class="add-button" type="submit" [disabled]="addDataForm.invalid">Add</button>
+          
+          </form>    
+    
       </div>
   
-  
+      
     </div>
-  
-  
-  
-  
-    <div class="add-data">
-      <h3>Add a present</h3>
-  
-      <form class="add-data-form" #addDataForm="ngForm" (ngSubmit)="addData(addDataForm.value); addDataForm.reset()">
-  
-          <label for="who-from">Who was the present from?</label>
-          <input
-            id="who-from"
-            type="text"
-            ngModel
-            #whoFrom="ngModel"
-            name="whoFrom"
-            style="text-transform: capitalize;"
-            required
-          >
-          <div *ngIf="whoFrom.touched && whoFrom.invalid" class="error-message">
-              Required
-          </div>
-      
-          <label for="who-to">Who was the present for?</label>
-          <input
-            id="who-to"
-            type="text"
-            ngModel
-            #whoTo="ngModel"
-            name="whoTo"
-            style="text-transform: capitalize;"
-            required
-          >
-          <div *ngIf="whoTo.touched && whoTo.invalid" class="error-message">
-            Required
-          </div>
-      
-          <label for="what-it-was">What was the present?</label>
-          <textarea
-            id="what-it-was"
-            type="text"
-            ngModel
-            #whatItWas="ngModel"
-            name="whatItWas"
-            rows="3"
-            required
-          ></textarea>
-          <div *ngIf="whatItWas.touched && whatItWas.invalid" class="error-message">
-            Required
-          </div>
-      
-          <label for="picture">Upload a picture</label>
-          <input
-            id="picture"
-            type="upload"
-            ngModel
-            #picture="ngModel"
-            name="picture"
-            style="text-transform: capitalize;"
-            required
-          >
-      
-          <label for="rating">Rate the present out of 5</label>
-          <input
-            id="rating"
-            class="slider"
-            type="range"
-            ngModel
-            #rating="ngModel"
-            name="rating"
-            min="0" max="5"
-            required
-          >
-          <div *ngIf="rating.touched && rating.invalid" class="error-message">
-            Required
-          </div>
-        
-          <button class="add-button" type="submit">Add</button>
-        
-        </form>    
-  
-    </div>
-
-    
-  </div>
+</div>
 
 </body>

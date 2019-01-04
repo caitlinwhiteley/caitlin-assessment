@@ -13,6 +13,20 @@ export class HomeComponent implements OnInit {
   presents: Observable<IPresent[]>;
   user;
   isLoggedIn: boolean;
+  max: number = 5;
+  rate: number = 0;
+  isReadonly: boolean = false;
+  overStar: number;
+  percent: number;
+
+  hoveringOver(value: number): void {
+    this.overStar = value;
+    this.percent = (value / this.max) * 100;
+  }
+ 
+  resetStar(): void {
+    this.overStar = void 0;
+  }
 
   constructor(
     private authService: AuthService,

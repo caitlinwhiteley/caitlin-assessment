@@ -8,6 +8,7 @@ import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { RatingModule } from 'ngx-bootstrap';
 
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
@@ -31,6 +32,7 @@ import { ForgottenPasswordComponent } from './forgotten-password/forgotten-passw
     AngularFirestoreModule,
     AngularFireAuthModule,
     FormsModule,
+    RatingModule.forRoot(),
     RouterModule.forRoot([
       {path: 'login', component: LoginComponent},
       {path: 'register', component: RegisterComponent},
