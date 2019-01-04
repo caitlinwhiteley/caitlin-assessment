@@ -1,15 +1,42 @@
 .present{
-    background-color: blueviolet;
-    display: block
+    background-color: rgba(220, 220, 220, 1);
+    opacity: 50%;
+    display: block;
+    border-radius: 15px;
+    padding: 15px 15px 15px 15px;
+    margin-bottom: 20px;
 }
 
 body {
-    margin-top: 100px;
+    margin: 100px 30px 30px 30px;
     background-color: rgba(220, 220, 220, 0.6);
     border-radius: 35px;
     border: solid rgb(237, 58, 64) 30px;
     padding: 20px;
     position: relative;
+    background-image: url(../../assets/images/presents-background.jpg);
+}
+
+h1 {
+    width: 45%;
+    background-color: blueviolet;
+    display: inline-block;
+}
+
+h2 {
+    width: 40%;
+    background-color: blueviolet;
+    display: inline-block;
+}
+
+/* h1::after {
+    content: "";
+    display: inline-block;
+    width: 100%;
+} */
+
+h3 {
+    text-align: center;
 }
 
 p {
@@ -78,9 +105,45 @@ label {
     display: block;
 }
 
-@media only screen and (min-width: 550px) {
-  #ribbon {
-      display: block;
-  }
+.container {
+    display: flex;
+    flex-direction: column-reverse;
+    align-content: center;
+    align-items: flex-start;
+    justify-content: space-around;
+}
 
-  }
+input, textarea {
+    width: 210px;
+}
+
+button {
+    display: block;
+    margin: 3px auto;
+    width: 90px;
+}
+
+.current-data {
+    height: 1000px;
+    width: 55%;
+    background-color: red;
+    margin-bottom: 100px;
+}
+
+.add-data {
+    position: sticky;
+    top: 40px;
+}
+
+@media only screen and (min-width: 550px) {
+    #ribbon {
+        display: block;
+    } 
+}
+
+@media only screen and (min-width: 750px) {
+    .container {
+        flex-direction: row;
+    }
+    
+}
