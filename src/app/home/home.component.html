@@ -1,6 +1,6 @@
 <body>
 
-    <header>
+    <header name="header">
       <img src="../assets/images/ribbon.png" alt="present ribbon" id="ribbon">
   
       <img 
@@ -24,26 +24,85 @@
 
 
 
-  <h1>Welcome, {{user.displayName}}</h1>
+  <h1><span class="small">Welcome,</span> {{user.displayName}}</h1>
   <h2>To your personal presents service!</h2>
 
   
 
   <div class="container">
     <div class="current-data">
-      <h3>Current data</h3>
+      <h3>Presents</h3>
   
-      <div *ngFor="let present of presents | async">
+      <div *ngFor="let present of presents | async" class="present">
 
-        <div  class="present">
-          <p> <i class="fa fa-gift" aria-hidden="true"></i>: {{present.whatItWas}} </p>
-          <p> Picture is of: {{present.picture}} </p>
-          <p> From {{present.whoFrom}} to {{present.whoTo}} </p>
-          <p> Present rating: {{present.rating}} </p>
-          <p> Present was received on {{present.dateOpened.toDate() | date}} </p>
-          <p> 
-            Thank you letter sent 
+          <div class="countdown" *ngIf="present==null">
+            <p>No presents, but only</p>
+            <p class="big" id="countdown"></p>
+            <p>days till next Christmas!</p>
+          </div>
+
+        <div>
+          <p (click)="showHideUpdateForm(present)" class="edit-present medium">
+            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+          </p>
+
+          <p (click)="deletePresent(present.id)" class="delete-present medium">
+              <i class="fa fa-trash-o" aria-hidden="true"></i>
+          </p>
+
+          <p class="big"> <i class="fa fa-gift" aria-hidden="true"></i> {{present.whatItWas}} </p>
+          <!-- <p> Picture is of: {{present.picture}} </p> -->
+
+          <p *ngIf="present.rating==0">
+            <i class="fa fa-star-o" aria-hidden="true"></i>
+            <i class="fa fa-star-o" aria-hidden="true"></i>
+            <i class="fa fa-star-o" aria-hidden="true"></i>
+            <i class="fa fa-star-o" aria-hidden="true"></i>
+            <i class="fa fa-star-o" aria-hidden="true"></i>
+          </p>
+          <p *ngIf="present.rating==1">
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star-o" aria-hidden="true"></i>
+            <i class="fa fa-star-o" aria-hidden="true"></i>
+            <i class="fa fa-star-o" aria-hidden="true"></i>
+            <i class="fa fa-star-o" aria-hidden="true"></i>
+          </p>
+          <p *ngIf="present.rating==2">
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star-o" aria-hidden="true"></i>
+            <i class="fa fa-star-o" aria-hidden="true"></i>
+            <i class="fa fa-star-o" aria-hidden="true"></i>
+          </p>
+          <p *ngIf="present.rating==3">
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star-o" aria-hidden="true"></i>
+            <i class="fa fa-star-o" aria-hidden="true"></i>
+          </p>
+          <p *ngIf="present.rating==4">
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star-o" aria-hidden="true"></i>
+          </p>
+          <p *ngIf="present.rating==5">
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+          </p>
+
+          <p class="left"> From <span class="medium">{{present.whoFrom}}</span></p>
+          <p class="left"> To <span class="medium">{{present.whoTo}}</span> </p>
+          <p class="left"> <span class="small">Present was received on</span> {{present.dateOpened.toDate() | date}} </p>
+          <p class="left"> 
+            Thank you letter <span class="medium">sent</span> 
             <input
+              class="thanked-checkbox"
               type="checkbox"
               [(ngModel)]="present.thanked"
               name="thanked"
@@ -51,8 +110,8 @@
             >
           </p>
     
-          <button (click)="showHideUpdateForm(present)">Edit info</button>
-          <button (click)="deletePresent(present.id)">Delete</button>
+          <!-- <button (click)="showHideUpdateForm(present)">Edit info</button>
+          <button (click)="deletePresent(present.id)">Delete</button> -->
         </div>
         
   
@@ -68,7 +127,7 @@
               style="text-transform: capitalize;"
               required
             >
-            <div *ngIf="whoFromUpdate.touched && whoFromUpdate.invalid">
+            <div *ngIf="whoFromUpdate.touched && whoFromUpdate.invalid" class="error-message">
               Required
             </div>
         
@@ -82,7 +141,7 @@
               style="text-transform: capitalize;"
               required
             >
-            <div *ngIf="whoToUpdate.touched && whoToUpdate.invalid">
+            <div *ngIf="whoToUpdate.touched && whoToUpdate.invalid" class="error-message">
               Required
             </div>
         
@@ -96,7 +155,7 @@
               rows="3"
               required
             ></textarea>
-            <div *ngIf="whatItWasUpdate.touched && whatItWasUpdate.invalid">
+            <div *ngIf="whatItWasUpdate.touched && whatItWasUpdate.invalid" class="error-message">
               Required
             </div>
         
@@ -114,6 +173,7 @@
             <label for="rating-update">Rate the present out of 5</label>
             <input
               id="rating-update"
+              class="slider"
               type="range"
               [(ngModel)]="present.rating"
               #ratingUpdate="ngModel"
@@ -121,15 +181,17 @@
               min="0" max="5"
               required
             >
-            <div *ngIf="ratingUpdate.touched && ratingUpdate.invalid">
+            <div *ngIf="ratingUpdate.touched && ratingUpdate.invalid" class="error-message">
               Required
             </div>
   
-            <button type="submit" [disabled]="updateForm.form.invalid">Update</button>
+            <button type="submit" [disabled]="updateForm.form.invalid" class="update-button">Update</button>
+            <p (click)="showHideUpdateForm(present)" class="medium cancel-edit">
+              <i class="fa fa-minus-square-o" aria-hidden="true"></i>
+            </p>
             
         </form>
   
-        <button type="button" (click)="showHideUpdateForm(present)" [hidden]="present.hideEdit">Cancel</button>
   
   
       </div>
@@ -155,7 +217,7 @@
             style="text-transform: capitalize;"
             required
           >
-          <div *ngIf="whoFrom.touched && whoFrom.invalid">
+          <div *ngIf="whoFrom.touched && whoFrom.invalid" class="error-message">
               Required
           </div>
       
@@ -169,7 +231,7 @@
             style="text-transform: capitalize;"
             required
           >
-          <div *ngIf="whoTo.touched && whoTo.invalid">
+          <div *ngIf="whoTo.touched && whoTo.invalid" class="error-message">
             Required
           </div>
       
@@ -181,17 +243,16 @@
             #whatItWas="ngModel"
             name="whatItWas"
             rows="3"
-            style="text-transform: capitalize;"
             required
           ></textarea>
-          <div *ngIf="whatItWas.touched && whatItWas.invalid">
+          <div *ngIf="whatItWas.touched && whatItWas.invalid" class="error-message">
             Required
           </div>
       
           <label for="picture">Upload a picture</label>
           <input
             id="picture"
-            type="text"
+            type="upload"
             ngModel
             #picture="ngModel"
             name="picture"
@@ -202,6 +263,7 @@
           <label for="rating">Rate the present out of 5</label>
           <input
             id="rating"
+            class="slider"
             type="range"
             ngModel
             #rating="ngModel"
@@ -209,7 +271,7 @@
             min="0" max="5"
             required
           >
-          <div *ngIf="rating.touched && rating.invalid">
+          <div *ngIf="rating.touched && rating.invalid" class="error-message">
             Required
           </div>
         
@@ -218,7 +280,8 @@
         </form>    
   
     </div>
-  </div>
 
+    
+  </div>
 
 </body>

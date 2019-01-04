@@ -1,46 +1,54 @@
+* {
+    list-style: none;
+}
+
 .present{
-    background-color: rgba(220, 220, 220, 1);
-    opacity: 50%;
+    background-color: rgba(45, 163, 98, 0.6);
     display: block;
     border-radius: 15px;
-    padding: 15px 15px 15px 15px;
+    padding: 45px 15px 15px 15px;
     margin-bottom: 20px;
+    /* background-image: url(../../assets/images/snow.jpg); */
+    border: solid rgb(27, 138, 77) 8px;
+    position: relative;
+    text-align: center;
 }
 
 body {
     margin: 100px 30px 30px 30px;
     background-color: rgba(220, 220, 220, 0.6);
     border-radius: 35px;
-    border: solid rgb(237, 58, 64) 30px;
+    border: solid rgb(255, 0, 34) 30px;
     padding: 20px;
     position: relative;
     background-image: url(../../assets/images/presents-background.jpg);
 }
 
 h1 {
-    width: 45%;
-    background-color: blueviolet;
-    display: inline-block;
+    /* width: 60%; */
+    display: block;
+    font-family: 'Luckiest Guy', cursive!important;
+    text-align: center;
+    margin: 60px auto auto auto;
+    font-size: 3em;
 }
 
 h2 {
-    width: 40%;
-    background-color: blueviolet;
-    display: inline-block;
+    /* width: 40%; */
+    /* float: right; */
+    font-family: 'Luckiest Guy', cursive;
+    text-align: center;
+    margin: 20px auto;
 }
-
-/* h1::after {
-    content: "";
-    display: inline-block;
-    width: 100%;
-} */
 
 h3 {
     text-align: center;
+    font-size: 1.7em;
+    font-family: 'Luckiest Guy', cursive;
 }
 
 p {
-   margin: 0;
+   margin: 3px 0;
    text-align: center; 
 }
 
@@ -103,36 +111,128 @@ p {
 
 label {
     display: block;
+    margin-top: 5px;
 }
 
 .container {
     display: flex;
     flex-direction: column-reverse;
     align-content: center;
-    align-items: flex-start;
+    align-items: center;
     justify-content: space-around;
 }
 
 input, textarea {
-    width: 210px;
+    width: 100%;
+    border: solid black 1px;
+    border-radius: 4px;
+    padding: 2px;
+}
+
+.add-data > input, .add-data > textarea {
+    border: solid rgb(255, 0, 34) 1px;
 }
 
 button {
     display: block;
     margin: 3px auto;
     width: 90px;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: white;
+}
+
+.add-button {
+    border: solid rgb(255, 0, 34) 3px;
+    margin-top: 20px;
 }
 
 .current-data {
-    height: 1000px;
-    width: 55%;
-    background-color: red;
-    margin-bottom: 100px;
+    width: 100%;
+    margin-bottom: 50px;
 }
 
-.add-data {
-    position: sticky;
-    top: 40px;
+.big {
+    font-size: 2em;
+}
+
+.medium {
+    font-size: 1.5em;
+}
+
+.small {
+    font-size: 0.7em;
+}
+
+.left {
+    text-align: left;
+}
+
+.thanked-checkbox {
+    width: 40px!important;
+    margin: 0 0 20px 0;
+}
+
+.error-message {
+    color: red;
+    font-size: 0.8em;
+}
+
+.edit-present {
+    position: absolute;
+    top: 7px;
+    left: 10px;
+    cursor: pointer;
+}
+
+.delete-present {
+    position: absolute;
+    top: 7px;
+    right: 10px;
+    cursor: pointer;
+}
+
+.cancel-edit {
+    cursor: pointer;
+}
+
+.update-button {
+    background-color: rgb(45, 163, 98);
+    margin: 10px auto;
+    border: solid black 2px;
+}
+
+.slider {
+    -webkit-appearance: none;
+    height: 3px;
+    background: white;
+    border: none;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+.slider:hover {
+    opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    background: rgb(255, 0, 34) ;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.slider::-moz-range-thumb {
+    width: 10px;
+    height: 10px;
+    background: rgb(255, 0, 34) ;
+    cursor: pointer;
+    border-radius: 50%;
 }
 
 @media only screen and (min-width: 550px) {
@@ -144,6 +244,19 @@ button {
 @media only screen and (min-width: 750px) {
     .container {
         flex-direction: row;
+        align-items: flex-start;
     }
     
+    .add-data {
+        position: sticky;
+        top: 40px;
+    }
+
+    .current-data {
+        width: 55%;
+    }
+
+    input, textarea {
+        width: 210px;
+    }
 }
