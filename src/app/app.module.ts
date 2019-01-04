@@ -14,6 +14,7 @@ import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { AuthGuardService } from './services/auth-guard.service';
 import { LettersComponent } from './letters/letters.component';
+import { ForgottenPasswordComponent } from './forgotten-password/forgotten-password.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { LettersComponent } from './letters/letters.component';
     RegisterComponent,
     LoginComponent,
     HomeComponent,
-    LettersComponent
+    LettersComponent,
+    ForgottenPasswordComponent
   ],
   imports: [
     BrowserModule,
@@ -32,6 +34,7 @@ import { LettersComponent } from './letters/letters.component';
     RouterModule.forRoot([
       {path: 'login', component: LoginComponent},
       {path: 'register', component: RegisterComponent},
+      {path: 'forgotten-password', component: ForgottenPasswordComponent},
       {path: '', component: HomeComponent, canActivate: [AuthGuardService]},
       {path: 'thank-you-letters', component: LettersComponent, canActivate: [AuthGuardService]}
     ])

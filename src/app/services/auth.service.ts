@@ -44,12 +44,16 @@ export class AuthService {
     return (this.user) ? true : false;
   }
 
-  register(email, password) {
+  register(email: string, password: string) {
     return this.afAuth.auth.createUserWithEmailAndPassword(email, password);
   }
 
-  login(email, password) {
+  login(email: string, password: string) {
     return this.afAuth.auth.signInWithEmailAndPassword(email, password);
+  }
+
+  resetPassword(email: string) {
+    return this.afAuth.auth.sendPasswordResetEmail(email);
   }
 
   logout() {
@@ -58,7 +62,7 @@ export class AuthService {
       .catch((error) => console.log('An error occured logging out: ' + error));
   }
 
-  setName(name) {
+  setName(name: string) {
     return this.afAuth.auth.currentUser.updateProfile({
       displayName: name,
       photoURL: 'https://i.pinimg.com/236x/b3/73/59/b373595c473299efe893572dd160f861--xmas-songs-song-with-lyrics.jpg'
